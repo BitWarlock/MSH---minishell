@@ -41,7 +41,7 @@ int	exit_status_code(int exit_code)
  * @env: linked list containing environment variables.
  */
 
-void	check_arg(char *arg, short *status)
+void	check_arg(char *arg, int *status)
 {
 	int	i;
 
@@ -77,7 +77,7 @@ void	exit_now(int exit_status)
 
 int	exit_(char **strs, int last_exit_stat)
 {
-	short	exit_status;
+	int	exit_status;
 
 	if (!strs)
 		exit_now(last_exit_stat);

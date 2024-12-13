@@ -60,7 +60,7 @@ void	heredoc_child_proc(t_shell *sh, char *tmp_file, t_ast *ast)
 		if (!ft_strncmp(str, hereoc_lim(ast), ft_strlen(str) + 1))
 			exit(0);
 		ft_printf(fd, "%s\n", expand_in_heredoc(str, sh,
-				ast->right->token->expansion_indices[0]));
+				(int)ast->right->token->expansion_indices[0]));
 		free(str);
 	}
 }

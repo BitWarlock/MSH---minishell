@@ -30,9 +30,9 @@ int	count_char(char *str, char h)
 	return (count);
 }
 
-int	first_occur(char *str, char h)
+size_t	first_occur(char *str, char h)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])

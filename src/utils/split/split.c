@@ -26,11 +26,11 @@ int	in_charset(char c, char *charset)
 	return (0);
 }
 
-int	count_substrs(char *str, char *charset)
+size_t	count_substrs(char *str, char *charset)
 {
-	int	count;
-	int	new_string;
-	int	i;
+	size_t	count;
+	int		new_string;
+	int		i;
 
 	count = 0;
 	i = -1;
@@ -50,10 +50,10 @@ int	count_substrs(char *str, char *charset)
 
 static char	*split_strdup(char *str, char *charset)
 {
-	char	*cpy;
-	int		len;
-	int		i;
-	char	*ptr;
+	char		*cpy;
+	size_t		len;
+	size_t		i;
+	char		*ptr;
 
 	len = 0;
 	i = 0;

@@ -12,9 +12,9 @@
 
 #include "../../../include/minishell.h"
 
-static int	count_args(t_token *cmd)
+static size_t	count_args(t_token *cmd)
 {
-	int	arg_count;
+	size_t	arg_count;
 
 	arg_count = 0;
 	while (cmd && cmd->name != AND && cmd->name != OR
@@ -52,7 +52,7 @@ static void	fill(char **cmd_args_array, t_token *arg_list)
 
 void	put_args_into_cmd_tokens(t_token *tokens)
 {
-	int	arg_count;
+	size_t	arg_count;
 
 	while (tokens)
 	{

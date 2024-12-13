@@ -33,7 +33,7 @@ static char	*operator(char *word)
 
 static char	*extract(char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i] && !operator(&str[i])

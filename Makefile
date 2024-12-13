@@ -19,8 +19,12 @@ GREEN			= \033[92m
 NEON			= \033[38;5;51m
 PURPLE			= \033[38;5;92;1m
 RESET			= \033[0m
-CFLAGS_R		= -O3 -Wall -Wextra -Werror -g -lreadline
-CFLAGS			= -O3 -Wall -Wextra -Werror -g
+CFLAGS_R		= -O3 -Wall -Wextra -Werror -g -lreadline \
+				   -fsanitize=address \
+				   -fsanitize=pointer-subtract -fsanitize=pointer-compare \
+				   -fno-omit-frame-pointer -O1
+CFLAGS			= -O3 -Wall -Wextra -Werror -g -Werror -Wshadow -Wconversion -Wformat \
+				   -Wnull-dereference -Wunused
 NAME			= minishell
 LIB_DIR			= ./libft
 LIBFT			= $(LIB_DIR)/libft.a
@@ -109,11 +113,7 @@ define MINISHELL_ART
 \033[0m
 endef
 
-ifeq ($(USER), mrezki)
-	CFLAGS_R += -L/Users/mrezki/.brew/opt/readline/lib
-else
-	CFLAGS_R += -L/Users/yel-yaqi/.brew/opt/readline/lib
-endif
+CFLAGS_R += -L/Users/$(USER)/.brew/opt/readline/lib
 
 all: $(NAME)
 	@printf "%b\n" "$(value MINISHELL_ART)"

@@ -14,13 +14,13 @@
 
 char	*simple_pwd(char *pwd, char *home)
 {
-	char	*rest_path;
-	char	*simplified;
-	int		len;
+	char			*rest_path;
+	char			*simplified;
+	unsigned int		len;
 
 	if (!home)
 		return (pwd);
-	len = ft_strlen(home);
+	len = (unsigned int)ft_strlen(home);
 	if (ft_strncmp(pwd, home, ft_strlen(home)))
 		return (pwd);
 	rest_path = ft_substr(pwd, len, ft_strlen(pwd) - len);

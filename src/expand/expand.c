@@ -12,7 +12,7 @@
 
 #include "../../include/minishell.h"
 
-char	*expand_single_var(char *var, t_shell *sh, int start, int end)
+char	*expand_single_var(char *var, t_shell *sh, unsigned int start, unsigned int end)
 {
 	char	*tmp;
 	char	*expanded;
@@ -43,7 +43,7 @@ char	*expand_(char *result, char *var, int *i, t_shell *sh)
 			(*i)++;
 	else
 		*i += sh->env_var_ends[sh->ends_arr_index] - 1;
-	tmp = expand_single_var(var, sh, start, *i);
+	tmp = expand_single_var(var, sh, (unsigned int)start, (unsigned int)*i);
 	if (tmp)
 		result = ft_strjoin(result, tmp);
 	if (!result)

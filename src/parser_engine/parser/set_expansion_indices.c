@@ -48,9 +48,9 @@ void	set_expansion_indices(t_token *token)
 	size_t	e;
 
 	var_count = 0;
-	i = -1;
-	while (token->word[++i])
-		if (token->word[i] == '$')
+	i = 0;
+	while (token->word[i])
+		if (token->word[i++] == '$')
 			var_count++;
 	if (!var_count)
 		return ;

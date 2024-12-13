@@ -47,10 +47,10 @@ int	include_hidden(char first, char *entry)
 	return (!(first != '.' && entry[0] == '.'));
 }
 
-size_t	entry_count(char *pattern)
+ssize_t	entry_count(char *pattern)
 {
 	struct dirent	*entry;
-	size_t			len;
+	ssize_t			len;
 	DIR				*cur_dir;
 
 	cur_dir = opendir(".");
@@ -69,10 +69,10 @@ size_t	entry_count(char *pattern)
 	return (len);
 }
 
-size_t	entries_count(char **args)
+ssize_t	entries_count(char **args)
 {
-	size_t	len;
-	size_t	i;
+	ssize_t	len;
+	ssize_t	i;
 
 	i = 0;
 	len = 0;

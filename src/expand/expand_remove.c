@@ -12,9 +12,9 @@
 
 #include "../../include/minishell.h"
 
-int	args_len(char **args)
+size_t	args_len(char **args)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (args[i])
@@ -34,10 +34,10 @@ int	*new_arr(char **args)
 	return (arr);
 }
 
-int	new_args_len(char **args, int *is_null)
+size_t	new_args_len(char **args, int *is_null)
 {
-	int	i;
-	int	len;
+	int		i;
+	size_t	len;
 
 	i = 0;
 	len = 0;
@@ -52,10 +52,10 @@ int	new_args_len(char **args, int *is_null)
 
 char	**remove_null_values(char **args, int *is_null)
 {
-	char	**new_args;
-	int		len_args_new;
-	int		i;
-	int		j;
+	char		**new_args;
+	size_t		len_args_new;
+	int			i;
+	int			j;
 
 	len_args_new = new_args_len(args, is_null);
 	if (len_args_new == args_len(args))
@@ -79,7 +79,7 @@ char	*copy_char(int *i, char *var, char *result)
 {
 	char	*tmp;
 
-	tmp = ft_substr(var, *i, 1);
+	tmp = ft_substr(var, (unsigned int)*i, 1);
 	result = ft_strjoin(result, tmp);
 	if (!result)
 		return (perror("Malloc"), NULL);

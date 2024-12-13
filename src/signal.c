@@ -41,7 +41,7 @@ void	disable_echo(void)
 		perror("tcgetattr");
 		exit(EXIT_FAILURE);
 	}
-	term.c_lflag &= ~ECHOCTL;
+	term.c_lflag &= ~(unsigned long)ECHOCTL;
 	if (tcsetattr(STDIN_FILENO, TCSANOW, &term) == -1)
 	{
 		perror("tcgetattr");

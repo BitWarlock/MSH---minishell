@@ -111,7 +111,6 @@ t_ast	*fetch_ast(t_token *tokens);
 
 int		check_builtins(char *str, t_envp **env, t_shell *sh);
 int		check_tokenizer_output(t_token *tokens);
-int		count_substrs(char *str, char *charset);
 int		is_heredoc_operator(t_token *token);
 int		is_redir_operator(t_token *token);
 int		build_pipelines(t_token *token);
@@ -120,6 +119,7 @@ int		check_tokens(char *line);
 int		is_operator(char *word);
 int		is_quoted(char c);
 
+size_t	count_substrs(char *str, char *charset);
 size_t	count_vars(char *expr);
 
 bool	strequal(char *str0, char *str1);

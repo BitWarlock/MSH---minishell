@@ -31,7 +31,7 @@ void	add_var_to_env(char *arg, t_envp *env, int join_string)
 		tname = ft_substr(arg, 0, first_occur(arg, '+'));
 	else
 		tname = ft_substr(arg, 0, first_occur(arg, '='));
-	tvalue = ft_substr(arg, first_occur(arg, '=') + 1, ft_strlen(arg));
+	tvalue = ft_substr(arg, (unsigned int)first_occur(arg, '=') + 1, ft_strlen(arg));
 	name = ft_strdup(tname);
 	value = ft_strdup(tvalue);
 	if (search_env_name(env, name) && join_string)
@@ -55,7 +55,7 @@ static int	is_valid_identifier(char *input, int *join_string)
 	size_t	i;
 	int		err;
 
-	i = -1;
+	i = 0;
 	err = 0;
 	if (count_char(input, '=') == 0 || input[0] == '=')
 		str = input;
@@ -63,10 +63,13 @@ static int	is_valid_identifier(char *input, int *join_string)
 		str = ft_substr(input, 0, first_occur(input, '='));
 	*join_string = (str[ft_strlen(str) - 1] == '+');
 	err = !(ft_isalpha(str[0]) || str[0] == '_');
-	while (str[++i])
+	while (str[i])
+	{
 		if (!character_valid(str[i], i == ft_strlen(str) - 1,
 				*join_string, input))
 			err = 1;
+		i++;	
+	}
 	if (err)
 		ft_printf(2, "Error: export: '%s' is not a valid identifier\n", str);
 	if (err)

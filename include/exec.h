@@ -43,8 +43,10 @@ char	*find_path(char *cmd, char *path_env);
 char	*get_tmp_file_name(int i);
 char	*hereoc_lim(t_ast *ast);
 
-size_t	entries_count(char **args);
-size_t	entry_count(char *pattern);
+size_t		args_len(char **args);
+
+ssize_t	entries_count(char **args);
+ssize_t	entry_count(char *pattern);
 
 int		character_valid(char c, int is_last, int join_string, char *input);
 int		file_out_fd(char *token, t_ast *ast, t_shell *sh, char flag);
@@ -54,6 +56,5 @@ int		set_exit_error(t_shell *sh, char *file, char *msg);
 int		file_in_fd(t_ast *ast, t_shell *sh, char *file);
 int		include_hidden(char first, char *entry);
 int		*new_arr(char **args);
-int		args_len(char **args);
 
 #endif // !EXEC_H

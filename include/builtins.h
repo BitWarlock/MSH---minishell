@@ -14,6 +14,7 @@
 # define BUILTINS_H
 
 # include "structs.h"
+# include <stdio.h>
 
 /* Built-ins */
 
@@ -34,6 +35,8 @@ int		echo_(char **args);
 int		env_(t_envp *head);
 int		pwd_(t_envp *env);
 
+size_t		first_occur(char *str, char h);
+
 char	*search_env_name(t_envp *env, char *val);
 char	*search_env(t_envp *env, char *val);
 char	*add_dir(char *pwd, char *dir);
@@ -47,7 +50,6 @@ void	free_split(char **strs);
 void	free_envp(t_envp *head);
 
 int		print_error(char *str, char *arg);
-int		first_occur(char *str, char h);
 int		count_char(char *str, char h);
 int		is_tilde(char *s1, char *s2);
 int		args_empty(char **args);

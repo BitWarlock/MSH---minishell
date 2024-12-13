@@ -36,19 +36,19 @@ void	expand_arg_entries(char **args, size_t *entry_i, char *pattern)
 char	**wildcard_expansion(char **args, t_token *token)
 {
 	char	**expanded;
-	size_t	args_count;
+	ssize_t	args_count;
 	size_t	i;
 	size_t	entry_i;
 
 	args_count = entries_count(args);
 	if (!args_count)
 		return (args);
-	expanded = gc_malloc(sizeof(char *) * (args_count + 2), 1);
+	expanded = gc_malloc(sizeof(char *) * (size_t)(args_count + 2), 1);
 	if (!expanded)
 		return (perror("Malloc"), NULL);
-	i = -1;
+	i = 0;
 	entry_i = 0;
-	while (args[++i])
+	while (args[i])
 	{
 		if (ft_strchr(args[i], '*') == NULL || token->expand_wild
 			|| !entry_count(args[i]))
@@ -57,6 +57,7 @@ char	**wildcard_expansion(char **args, t_token *token)
 			expand_arg_entries(expanded, &entry_i, args[i]);
 		if (token)
 			token = token->next;
+		i++;
 	}
 	expanded[entry_i] = NULL;
 	return (expanded);

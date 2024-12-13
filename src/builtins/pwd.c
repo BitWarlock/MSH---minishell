@@ -24,9 +24,9 @@
 
 char	*remove_last_dir(char *pwd)
 {
-	char	*new_value;
-	int		i;
-	int		last_pos;
+	char		*new_value;
+	size_t		i;
+	size_t		last_pos;
 
 	if (!ft_strncmp(pwd, "/", 2) || (count_char(pwd, '/') == 1
 			&& pwd[0] == '/'))
